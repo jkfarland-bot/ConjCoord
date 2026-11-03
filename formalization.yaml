@@ -43,6 +43,20 @@ sources:
       corollaries that use them.
     license: "CC-BY-4.0"
     author_endorsement: "participated"
+  - title: "The 2-adic interpolation of an odd quartic L-value: one power series, two towers, and the first derivative bit"
+    authors:
+      - "Joseph S. Farland"
+    type: "article"
+    location: "Unpublished preprint, Paper V of the author's K Project series (draft of 30 September 2026); no public identifier yet"
+    relationship: "background"
+    note: >-
+      Same author as the formalization. Paper V states Conjecture 5.3 (Conjecture coord), which
+      Corollary 2 of the companion note proves and conjecture_coord formalizes. Paper V
+      Theorem 5.2(iv), that v_lambda(u_1) >= 2 holds exactly when
+      h(-8p) - h(-4p) = 8 [p = 5 (mod 32)] (mod 16), is not formalized here: it enters conjecture_coord as the hypothesis hV, and the proposition
+      v_lambda(u_1) >= 2 is the abstract proposition V. Nothing else from Paper V is used.
+    license: "unknown"
+    author_endorsement: "participated"
   - title: "Modular forms of weight 1/2"
     authors:
       - "Jean-Pierre Serre"
