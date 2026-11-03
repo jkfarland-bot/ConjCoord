@@ -19,3 +19,13 @@ keywords:
   - Lean 4
   - Mathlib
   - formal verification
+preferred-citation:
+  type: article
+  title: "The first derivative bit at p ≡ 5 (mod 16): a proof of Conjecture coord of Paper V"
+  authors:
+    - family-names: Farland
+      given-names: Joseph S.
+      orcid: "https://orcid.org/0009-0007-6809-804X"
+  year: 2026
+  doi: 10.5281/zenodo.23903759
+  notes: "Preprint, Zenodo"

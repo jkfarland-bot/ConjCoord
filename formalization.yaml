@@ -30,8 +30,9 @@ sources:
   - title: "The first derivative bit at p = 5 (mod 16): a proof of Conjecture coord of Paper V"
     authors:
       - "Joseph S. Farland"
+    id: "https://doi.org/10.5281/zenodo.23903759"
     type: "article"
-    location: "Draft note, 2 November 2026"
+    location: "Preprint, Zenodo, 2026, https://doi.org/10.5281/zenodo.23903759"
     relationship: "formalizes"
     note: >-
       Theorem 1, Lemma 3 (combinatorial part), the deduction in Proposition 5 from Sturm's
