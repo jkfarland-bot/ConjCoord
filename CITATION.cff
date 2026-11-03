@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ConjCoord: a Lean 4 formalization of a class number congruence modulo 16 and Conjecture coord of Paper V"
+authors:
+  - family-names: Farland
+    given-names: Joseph S.
+    orcid: "https://orcid.org/0009-0007-6809-804X"
+version: v1.0
+date-released: 2026-11-02
+license: Apache-2.0
+repository-code: "https://github.com/jkfarland-bot/ConjCoord"
+keywords:
+  - class numbers
+  - imaginary quadratic fields
+  - sums of three squares
+  - theta series
+  - Sturm bound
+  - Lean 4
+  - Mathlib
+  - formal verification
