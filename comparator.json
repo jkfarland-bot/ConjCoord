@@ -1,0 +1,40 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "ConjCoord.tCoeff_check",
+    "ConjCoord.phi_eq",
+    "ConjCoord.phi_check",
+    "ConjCoord.sturm_iter",
+    "ConjCoord.phi_dvd",
+    "ConjCoord.tCoeff_dvd",
+    "ConjCoord.r3_eq_three_mul_reps122",
+    "ConjCoord.r3_two_mul_eq",
+    "ConjCoord.reps112_eq",
+    "ConjCoord.lemma3",
+    "ConjCoord.two_sq_unique",
+    "ConjCoord.gCount_prime",
+    "ConjCoord.reps_congruence",
+    "ConjCoord.r3_congruence",
+    "ConjCoord.class_number_congruence",
+    "ConjCoord.conjecture_coord",
+    "ConjCoord.octant_sum",
+    "ConjCoord.octant_nonresidues",
+    "ConjCoord.desnoux_corollary"
+  ],
+  "definition_names": [
+    "ConjCoord.box3",
+    "ConjCoord.reps",
+    "ConjCoord.r3",
+    "ConjCoord.gCount",
+    "ConjCoord.tCoeff",
+    "ConjCoord.phi",
+    "ConjCoord.octA"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
