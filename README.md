@@ -11,6 +11,11 @@ h(-8p) ≡ h(-4p) + 8·[b ≡ ±6 (mod 16)]   (mod 16).
 Companion note: J. S. Farland, *The first derivative bit at p ≡ 5 (mod 16): a proof of Conjecture
 coord of Paper V* (preprint, Zenodo, 2026, [doi:10.5281/zenodo.23903759](https://doi.org/10.5281/zenodo.23903759)).
 
+Paper V is J. S. Farland, *The 2-adic interpolation of an odd quartic L-value: one power series,
+two towers, and the first derivative bit* (unpublished preprint in the same author's series; no
+public identifier yet). It states Conjecture 5.3, proved here as `conjecture_coord`, and its
+Theorem 5.2(iv) enters that theorem only as the hypothesis `hV`; nothing from Paper V is formalized.
+
 Archived on Zenodo: [doi:10.5281/zenodo.23902875](https://doi.org/10.5281/zenodo.23902875) (all versions). Version 1.0.1:
 [doi:10.5281/zenodo.23913183](https://doi.org/10.5281/zenodo.23913183).
 
