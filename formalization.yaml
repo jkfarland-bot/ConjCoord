@@ -126,8 +126,12 @@ fidelity:
     division by 2, with Sturm's theorem modulo 2 at bound 512. The class numbers h, h' are
     natural numbers with r3 p = 12 h and r3 (2p) = 12 h', not Mathlib's classNumber. Paper V's
     v_lambda(u_1) >= 2 is a proposition V characterized by Theorem 5.2(iv). In Corollary 7 the
-    Pell solutions, narrow class numbers and c2 are arbitrary integers satisfying Desnoux's
-    congruence. "Exactly one of" is written as an equivalence of the first condition with the
+    Pell solutions are any integer solutions of R^2 - p S^2 = 1 and R'^2 - 2p S'^2 = 1 (Desnoux
+    takes the least positive ones), and the narrow class numbers and c2 are arbitrary integers
+    satisfying Desnoux's congruence. The halves S/2 and S'/2 are Lean integer quotients S0 / 2 and
+    S0' / 2; the Pell equations force S0 and S0' to be even for p = 5 (mod 8)
+    (desnoux_halves_exact), and the corollary states 2 * (S0 / 2) = S0 and 2 * (S0' / 2) = S0', so
+    the quotients are exact halves. "Exactly one of" is written as an equivalence of the first condition with the
     negation of the second.
 
 review:
@@ -161,6 +165,7 @@ alignment:
     - {source: "Corollary 2 (Paper V, Conjecture 5.3)", lean: "ConjCoord.conjecture_coord", module: "Challenge", status: "proved"}
     - {source: "Corollary 6", lean: "ConjCoord.octant_sum", module: "Challenge", status: "proved"}
     - {source: "Corollary 6, second form", lean: "ConjCoord.octant_nonresidues", module: "Challenge", status: "proved"}
+    - {source: "Corollary 7, evenness of S and S'", lean: "ConjCoord.desnoux_halves_exact", module: "Challenge", status: "proved"}
     - {source: "Corollary 7", lean: "ConjCoord.desnoux_corollary", module: "Challenge", status: "proved"}
 
 acknowledgements: "Lean 4 and Mathlib; Claude (Anthropic) for formalization assistance; the Palomar starter template for the check scripts."

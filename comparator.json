@@ -20,6 +20,7 @@
     "ConjCoord.conjecture_coord",
     "ConjCoord.octant_sum",
     "ConjCoord.octant_nonresidues",
+    "ConjCoord.desnoux_halves_exact",
     "ConjCoord.desnoux_corollary"
   ],
   "definition_names": [

@@ -39,8 +39,13 @@ Archived on Zenodo: [doi:10.5281/zenodo.23902875](https://doi.org/10.5281/zenodo
 - **Corollary 6** (`octant_sum`, `octant_nonresidues`):
   - `∑_{0<x<p/8} (x/p) ≡ 2A (mod 4)`;
   - the number of nonresidues in `(0, p/8)` is `≡ (p-5)/16 + A (mod 2)`.
-- **Corollary 7** (`desnoux_corollary`): combined with Desnoux's Theorem B,
-  `c₂R(S/2)h⁺(p) + 17R′(S′/2)h⁺(2p) ≡ 2h(-4p) + 8A (mod 16)`.
+- **Corollary 7** (`desnoux_halves_exact`, `desnoux_corollary`): combined with Desnoux's Theorem B,
+  `c₂R(S/2)h⁺(p) + 17R′(S′/2)h⁺(2p) ≡ 2h(-4p) + 8A (mod 16)`. The halves are exact: `S` and `S′`
+  solve `R² - pS² = 1` and `R′² - 2pS′² = 1`, which force both to be even when `p ≡ 5 (mod 8)`
+  (`desnoux_halves_exact`, by reduction modulo 8). The statement takes the two Pell equations as
+  hypotheses and records `2 * (S₀ / 2) = S₀` and `2 * (S₀' / 2) = S₀'` in its conclusion, so the
+  integer quotients `S₀ / 2`, `S₀' / 2` in it are the halves of Desnoux's formula, not rounded
+  quotients.
 
 Here `A = octA b = [b ≡ ±6 (mod 16)]`.
 
@@ -62,7 +67,7 @@ three-square class number formula. These inputs are hypotheses in the statements
 - **For the corollaries:**
   - Paper V, Theorem 5.2(iv), as the equivalence `hV`;
   - Berndt's formula (7.3) for the octant sum, as `hBerndt`;
-  - Desnoux's Theorem B (§6), as `hD`.
+  - Desnoux's Theorem B (§6), as `hD`, for any solutions of the two Pell equations.
 
 The rest is formalized, including the passage from the finite check to all coefficients, the
 inversion of `θ(1)`, the bijections of Lemma 3, and the uniqueness argument at `p`.
@@ -89,5 +94,14 @@ Lean, NanoDa and con-ron kernels, including the replay of the finite check. The 
   finite check.
 - `ConjCoord/Reps.lean`: Lemma 3.
 - `ConjCoord/TwoSquares.lean`: `gCount p ≡ 4A (mod 8)`, with the uniqueness of `p = a² + b²`.
-- `ConjCoord/Main.lean`: Sturm iteration, Proposition 5, Theorem 1, Corollaries 2, 6 and 7.
+- `ConjCoord/Main.lean`: Sturm iteration, Proposition 5, Theorem 1, Corollaries 2, 6 and 7, and the
+  evenness of the Pell solutions (`pell_even`, `pell2_even`).
 - `Challenge.lean` / `Solution.lean` / `comparator.json`: the Palomar statement surface.
+
+## Changes
+
+- **v1.0.1.** Corollary 7 now takes the Pell equations `R² - pS₀² = 1`, `R′² - 2pS₀′² = 1` as
+  hypotheses and states that `S₀ / 2` and `S₀′ / 2` are exact halves; the new theorem
+  `desnoux_halves_exact` proves the evenness. In v1.0 the corollary took arbitrary integers, so its
+  integer quotients could be rounded and the statement did not express Desnoux's formula
+  (Palomar review). The other 18 statements are unchanged.

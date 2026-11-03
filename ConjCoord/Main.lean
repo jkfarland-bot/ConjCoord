@@ -13,7 +13,8 @@ public import ConjCoord.TwoSquares
 `p ≡ 5 (mod 16)` this is `2 r_{1,2,4}(p) - r_{1,2,2}(p) ≡ 32 A (mod 64)` (`reps_congruence`).
 Gauss's theorem turns it into the class number congruence (`class_number_congruence`), which
 gives Conjecture 5.3 of Paper V (`conjecture_coord`), the octant sum (`octant_sum`,
-`octant_nonresidues`) and the combination with Desnoux (`desnoux_corollary`).
+`octant_nonresidues`) and the combination with Desnoux (`desnoux_halves_exact`,
+`desnoux_corollary`).
 -/
 
 open Finset
@@ -220,16 +221,68 @@ theorem octant_nonresidues (S : SturmInput phi 512) {p : ℕ} [hpF : Fact p.Prim
   rw [nsmul_eq_mul, mul_one] at hs
   omega
 
-/-- **Corollary 7 (with Desnoux).** Desnoux's Theorem B, §6, for `p ≡ 5 (mod 8)`:
+/-- The Pell equation `R² - p S² = 1` with `p ≡ 5 (mod 8)` forces `S` to be even: if `S` were odd,
+then `R² ≡ 1 + p ≡ 6 (mod 8)`. -/
+theorem pell_even {p : ℕ} (h5 : p % 16 = 5) {R S : ℤ} (hP : R ^ 2 - (p : ℤ) * S ^ 2 = 1) :
+    Even S := by
+  by_contra hS
+  rw [Int.not_even_iff_odd] at hS
+  obtain ⟨k, rfl⟩ := hS
+  have hp : (p : ℤ) = 8 * ((p / 8 : ℕ) : ℤ) + 5 := by omega
+  have := congrArg (Int.cast : ℤ → ZMod 8) hP
+  rw [hp] at this
+  push_cast at this
+  have h8 : (8 : ZMod 8) = 0 := by decide
+  rw [h8, zero_mul, zero_add] at this
+  generalize (R : ZMod 8) = x at this
+  generalize (k : ZMod 8) = y at this
+  revert x y this
+  decide
+
+/-- The Pell equation `R'² - 2p S'² = 1` with `p ≡ 5 (mod 8)` forces `S'` to be even: if `S'` were
+odd, then `R'² ≡ 1 + 2p ≡ 3 (mod 8)`. -/
+theorem pell2_even {p : ℕ} (h5 : p % 16 = 5) {R S : ℤ}
+    (hP : R ^ 2 - 2 * (p : ℤ) * S ^ 2 = 1) : Even S := by
+  by_contra hS
+  rw [Int.not_even_iff_odd] at hS
+  obtain ⟨k, rfl⟩ := hS
+  have hp : (p : ℤ) = 8 * ((p / 8 : ℕ) : ℤ) + 5 := by omega
+  have := congrArg (Int.cast : ℤ → ZMod 8) hP
+  rw [hp] at this
+  push_cast at this
+  have h8 : (8 : ZMod 8) = 0 := by decide
+  rw [h8, zero_mul, zero_add] at this
+  generalize (R : ZMod 8) = x at this
+  generalize (k : ZMod 8) = y at this
+  revert x y this
+  decide
+
+/-- **The halves in Desnoux's formula are exact.** For `p ≡ 5 (mod 16)`, any solutions of
+`R² - p S₀² = 1` and `R'² - 2p S₀'² = 1` have `S₀` and `S₀'` even, so the integer quotients `S₀ / 2`
+and `S₀' / 2` are the halves `S/2` and `S'/2` of Desnoux's Theorem B. -/
+theorem desnoux_halves_exact {p : ℕ} (h5 : p % 16 = 5) {R S₀ R' S₀' : ℤ}
+    (hPell : R ^ 2 - (p : ℤ) * S₀ ^ 2 = 1) (hPell' : R' ^ 2 - 2 * (p : ℤ) * S₀' ^ 2 = 1) :
+    2 * (S₀ / 2) = S₀ ∧ 2 * (S₀' / 2) = S₀' :=
+  ⟨Int.mul_ediv_cancel' (even_iff_two_dvd.1 (pell_even h5 hPell)),
+    Int.mul_ediv_cancel' (even_iff_two_dvd.1 (pell2_even h5 hPell'))⟩
+
+/-- **Corollary 7 (with Desnoux).** Let `(R, S₀)` and `(R', S₀')` solve the Pell equations
+`R² - p S₀² = 1` and `R'² - 2p S₀'² = 1` (Desnoux takes the least positive solutions; the corollary
+holds for any). The integer quotients `S₀ / 2` and `S₀' / 2` are then the exact halves `S/2` and
+`S'/2` (first two conjuncts, from `desnoux_halves_exact`), so the hypothesis `hD` is Desnoux's
+Theorem B, §6, for `p ≡ 5 (mod 8)`,
 `h(-4p) - c₂ R (S/2) h⁺(p) + h(-8p) - 17 R' (S'/2) h⁺(2p) ≡ 32·[p ≡ 5, 29 (mod 32)] (mod 64)`,
-taken as a hypothesis, gives
+and the conclusion is
 `c₂ R (S/2) h⁺(p) + 17 R' (S'/2) h⁺(2p) ≡ 2 h(-4p) + 8 A (mod 16)`. -/
 theorem desnoux_corollary (S : SturmInput phi 512) {p : ℕ} (hp : p.Prime) (h5 : p % 16 = 5)
     {a b : ℤ} (hab : a ^ 2 + b ^ 2 = p) (hb : Even b) {h h' : ℕ}
     (hG : r3 p = 12 * h) (hG' : r3 (2 * p) = 12 * h') (c₂ R S₀ R' S₀' hplus hplus2 : ℤ)
+    (hPell : R ^ 2 - (p : ℤ) * S₀ ^ 2 = 1) (hPell' : R' ^ 2 - 2 * (p : ℤ) * S₀' ^ 2 = 1)
     (hD : (h : ℤ) - c₂ * R * (S₀ / 2) * hplus + h' - 17 * R' * (S₀' / 2) * hplus2 ≡
       32 * (if p % 32 = 5 ∨ p % 32 = 29 then 1 else 0) [ZMOD 64]) :
-    c₂ * R * (S₀ / 2) * hplus + 17 * R' * (S₀' / 2) * hplus2 ≡ 2 * h + 8 * octA b [ZMOD 16] := by
+    2 * (S₀ / 2) = S₀ ∧ 2 * (S₀' / 2) = S₀' ∧
+      c₂ * R * (S₀ / 2) * hplus + 17 * R' * (S₀' / 2) * hplus2 ≡ 2 * h + 8 * octA b [ZMOD 16] := by
+  refine ⟨(desnoux_halves_exact h5 hPell hPell').1, (desnoux_halves_exact h5 hPell hPell').2, ?_⟩
   have hc := class_number_congruence S hp h5 hab hb hG hG'
   unfold Int.ModEq at *
   split_ifs at hD <;> omega
