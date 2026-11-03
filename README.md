@@ -11,7 +11,8 @@ h(-8p) ≡ h(-4p) + 8·[b ≡ ±6 (mod 16)]   (mod 16).
 Companion note: J. S. Farland, *The first derivative bit at p ≡ 5 (mod 16): a proof of Conjecture
 coord of Paper V* (preprint, Zenodo, 2026, [doi:10.5281/zenodo.23903759](https://doi.org/10.5281/zenodo.23903759)).
 
-Archived on Zenodo: [doi:10.5281/zenodo.23902875](https://doi.org/10.5281/zenodo.23902875) (all versions).
+Archived on Zenodo: [doi:10.5281/zenodo.23902875](https://doi.org/10.5281/zenodo.23902875) (all versions). Version 1.0.1:
+[doi:10.5281/zenodo.23913183](https://doi.org/10.5281/zenodo.23913183).
 
 ## What is proved
 
