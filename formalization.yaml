@@ -1,0 +1,165 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "ConjCoord: a class number congruence modulo 16 for p = 5 (mod 16) and Conjecture coord of Paper V"
+  description: >-
+    For primes p = 5 (mod 16), p = a^2 + b^2 with b even, the companion note proves
+    h(-8p) = h(-4p) + 8 [b = +-6 (mod 16)] (mod 16), which settles Conjecture 5.3 of Paper V of
+    the K Project series. The proof writes 4(h(-8p) - h(-4p)) as a combination of
+    representation numbers of x^2 + 2y^2 + 4z^2 and x^2 + 2y^2 + 2z^2. It shows that a weight-2
+    form Phi built from sieved theta series vanishes modulo 256, by Sturm's theorem and a finite
+    check below the bound 512, and reads off the coefficient at p. This development formalizes
+    the proof with the modular input (Serre-Stark modularity and Sturm's theorem) and Gauss's
+    three-square class number formula as explicit hypotheses. It proves the finite check by
+    kernel computation, the iteration of Sturm's theorem, the inversion of theta(1), the
+    bijections relating the ternary forms to sums of three squares, the uniqueness argument for
+    p = a^2 + b^2, the congruence, Conjecture 5.3 given Paper V Theorem 5.2(iv), and the
+    corollaries on the octant sum and with Desnoux's congruence.
+  authors:
+    - "Joseph S. Farland"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Joseph S. Farland"
+
+classification:
+  arxiv: ["math.NT"]
+  msc2020: ["11R29", "11E25", "11F37", "11A15", "68V20"]
+
+sources:
+  - title: "The first derivative bit at p = 5 (mod 16): a proof of Conjecture coord of Paper V"
+    authors:
+      - "Joseph S. Farland"
+    type: "article"
+    location: "Draft note, 2 November 2026"
+    relationship: "formalizes"
+    note: >-
+      Theorem 1, Lemma 3 (combinatorial part), the deduction in Proposition 5 from Sturm's
+      theorem and the finite check, the proof of Theorem 1, and Corollaries 2, 6 and 7 are
+      formalized. Proposition 4 (modularity, from Serre-Stark) and Sturm's theorem are packaged in
+      the hypothesis SturmInput. Gauss's theorem r3(m) = 12 h(-4m) is a hypothesis. Paper V
+      Theorem 5.2(iv), Berndt's formula (7.3) and Desnoux's Theorem B are hypotheses of the
+      corollaries that use them.
+    license: "CC-BY-4.0"
+    author_endorsement: "participated"
+  - title: "Modular forms of weight 1/2"
+    authors:
+      - "Jean-Pierre Serre"
+      - "Harold M. Stark"
+    type: "article"
+    location: "Modular Functions of One Variable VI, Lecture Notes in Math. 627, Springer, 1977, 27-67"
+    relationship: "background"
+    note: "The modularity of the theta series behind Proposition 4; packaged in SturmInput.mem."
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "On the congruence of modular forms"
+    authors:
+      - "Jacob Sturm"
+    type: "article"
+    location: "Number Theory (New York 1984-85), Lecture Notes in Math. 1240, Springer, 1987, 275-280"
+    relationship: "background"
+    note: "Theorem 1, with bound 512 for Gamma' of index 3072; packaged in SturmInput.sturm."
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Classical theorems on quadratic residues"
+    authors:
+      - "Bruce C. Berndt"
+    type: "article"
+    location: "Enseign. Math. (2) 22 (1976), 261-304"
+    relationship: "background"
+    note: "Formula (7.3) for the octant sum, a hypothesis of Corollary 6."
+    license: "unknown"
+    author_endorsement: "n/a"
+  - title: "Congruences dyadiques entre nombres de classes de corps quadratiques"
+    authors:
+      - "Pierre-Jean Desnoux"
+    type: "article"
+    location: "manuscripta math. 62 (1988), 163-179"
+    relationship: "background"
+    note: "Theorem B, section 6, a hypothesis of Corollary 7."
+    license: "unknown"
+    author_endorsement: "n/a"
+
+status:
+  scope: >-
+    Formalized: the finite check 64 | T(m) for m <= 512 and 256 | Phi(n) for n <= 512 (kernel
+    computation, with a proof that the fast count equals the count over the box); Phi(n) =
+    4(T(n) + sum_{k>=1} 2 T(n - k^2)); Sturm's theorem iterated eight times; 64 | T(m) for all m;
+    r3(n) = 3 r_{1,2,2}(n) for n = 1 (mod 4), r3(2n) = 3 r_{1,1,2}(n) and r_{1,1,2}(n) =
+    2 r_{1,2,4}(n) for odd n; uniqueness of p = a^2 + b^2 with b even; gCount p = 4A (mod 8);
+    2 r_{1,2,4}(p) - r_{1,2,2}(p) = 32A (mod 64); r3(2p) - r3(p) = 96A (mod 192); the class
+    number congruence; Conjecture 5.3 of Paper V; the octant sum modulo 4 and the parity of the
+    number of nonresidues in (0, p/8); the combination with Desnoux's congruence. Not
+    formalized: that Phi is a modular form of weight 2 on Gamma0(1024) cap ker chi8 (Serre-Stark),
+    Sturm's theorem, Gauss's r3(m) = 12 h(-4m) and its link to Mathlib's class number, Paper V
+    Theorem 5.2(iv), Berndt's (7.3), and Desnoux's Theorem B.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude (Anthropic)"]
+      framework: "Claude.ai with code execution"
+      tool_setup: >-
+        AI-assisted: the Lean code was drafted and repaired by Claude against the note's
+        statements and proofs and compiled locally with lake; the packaging of the modular input
+        as SturmInput and the fast count for the kernel check were proposed by Claude.
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "API-only plus local machine"
+      prompting_notes: "The model was given the note and asked for a Lean version without sorry or native_decide."
+  spend_usd: "subscription-based"
+  notes: >-
+    The scope is everything in the note except the cited theorems on modular forms, Gauss's
+    three-square formula and the results of Paper V, Berndt and Desnoux used by the corollaries.
+
+fidelity:
+  divergences: >-
+    Representation numbers are cardinalities of finite sets of integer triples in the box
+    [-n, n]^3. The q-expansion of Phi is defined coefficientwise as 4 sum_w T(n - w^2), with T the
+    coefficient of F5 - 8 G theta(16) written as counts of triples. The modular input is the
+    abstract structure SturmInput: a set M of integer sequences containing phi, closed under
+    division by 2, with Sturm's theorem modulo 2 at bound 512. The class numbers h, h' are
+    natural numbers with r3 p = 12 h and r3 (2p) = 12 h', not Mathlib's classNumber. Paper V's
+    v_lambda(u_1) >= 2 is a proposition V characterized by Theorem 5.2(iv). In Corollary 7 the
+    Pell solutions, narrow class numbers and c2 are arbitrary integers satisfying Desnoux's
+    congruence. "Exactly one of" is written as an equivalence of the first condition with the
+    negation of the second.
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Joseph S. Farland"
+  notes: >-
+    The definitions in Challenge.lean are copied verbatim from the development and compared by
+    Comparator, including the structure SturmInput (a modified copy is rejected). The companion
+    note had an independent AI referee pass; no external human referee has reviewed the note or
+    the formalization.
+
+alignment:
+  namespace: "ConjCoord"
+  statements:
+    - {source: "Proof of Proposition 5, the finite check", lean: "ConjCoord.tCoeff_check", module: "Challenge", status: "proved"}
+    - {source: "Definition of Phi, coefficientwise", lean: "ConjCoord.phi_eq", module: "Challenge", status: "proved"}
+    - {source: "Proof of Proposition 5, the check below the Sturm bound", lean: "ConjCoord.phi_check", module: "Challenge", status: "proved"}
+    - {source: "Proof of Proposition 5, repeating Sturm's theorem", lean: "ConjCoord.sturm_iter", module: "Challenge", status: "proved"}
+    - {source: "Proposition 5", lean: "ConjCoord.phi_dvd", module: "Challenge", status: "proved"}
+    - {source: "Proof of Theorem 1, inverting theta(1)", lean: "ConjCoord.tCoeff_dvd", module: "Challenge", status: "proved"}
+    - {source: "Lemma 3, first identity", lean: "ConjCoord.r3_eq_three_mul_reps122", module: "Challenge", status: "proved"}
+    - {source: "Lemma 3, second identity, first step", lean: "ConjCoord.r3_two_mul_eq", module: "Challenge", status: "proved"}
+    - {source: "Lemma 3, second identity, second step", lean: "ConjCoord.reps112_eq", module: "Challenge", status: "proved"}
+    - {source: "Lemma 3", lean: "ConjCoord.lemma3", module: "Challenge", status: "proved"}
+    - {source: "Proof of Theorem 1, g(p) = 4A (uniqueness)", lean: "ConjCoord.two_sq_unique", module: "Challenge", status: "proved"}
+    - {source: "Proof of Theorem 1, the coefficient of G theta(16) at p", lean: "ConjCoord.gCount_prime", module: "Challenge", status: "proved"}
+    - {source: "Theorem 1, as F(p) = 32A (mod 64)", lean: "ConjCoord.reps_congruence", module: "Challenge", status: "proved"}
+    - {source: "Theorem 1, for sums of three squares", lean: "ConjCoord.r3_congruence", module: "Challenge", status: "proved"}
+    - {source: "Theorem 1", lean: "ConjCoord.class_number_congruence", module: "Challenge", status: "proved"}
+    - {source: "Corollary 2 (Paper V, Conjecture 5.3)", lean: "ConjCoord.conjecture_coord", module: "Challenge", status: "proved"}
+    - {source: "Corollary 6", lean: "ConjCoord.octant_sum", module: "Challenge", status: "proved"}
+    - {source: "Corollary 6, second form", lean: "ConjCoord.octant_nonresidues", module: "Challenge", status: "proved"}
+    - {source: "Corollary 7", lean: "ConjCoord.desnoux_corollary", module: "Challenge", status: "proved"}
+
+acknowledgements: "Lean 4 and Mathlib; Claude (Anthropic) for formalization assistance; the Palomar starter template for the check scripts."
