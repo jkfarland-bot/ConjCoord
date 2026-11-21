@@ -108,6 +108,9 @@ bodies included (earlier releases listed them as holes, which compares only thei
 
 ## Changes
 
+- **v1.0.2.** `comparator.json` lists no definition holes, so Comparator compares the definitions
+  in `Challenge.lean` with the development's, bodies included; in earlier releases only their
+  names and types were compared. The repository now also carries the Palomar template CI (build, metadata, comparator). No statement changes.
 - **v1.0.1.** Corollary 7 now takes the Pell equations `R² - pS₀² = 1`, `R′² - 2pS₀′² = 1` as
   hypotheses and states that `S₀ / 2` and `S₀′ / 2` are exact halves; the new theorem
   `desnoux_halves_exact` proves the evenness. In v1.0 the corollary took arbitrary integers, so its
