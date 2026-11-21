@@ -89,7 +89,9 @@ scripts/verify-comparator.sh
 There is no `sorry` and no `native_decide`. Every result depends only on `propext`,
 `Classical.choice` and `Quot.sound`. Comparator accepts `Solution` against `Challenge` under the
 Lean, NanoDa and con-ron kernels, including the replay of the finite check. The structure
-`SturmInput` is compared as well: a modified copy in `Challenge.lean` is rejected.
+`SturmInput` is compared as well: a modified copy in `Challenge.lean` is rejected. `comparator.json`
+lists no definition holes, so the definitions in `Challenge.lean` are compared with the development's,
+bodies included (earlier releases listed them as holes, which compares only their names and types).
 
 ## Layout
 
