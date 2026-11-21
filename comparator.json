@@ -23,15 +23,7 @@
     "ConjCoord.desnoux_halves_exact",
     "ConjCoord.desnoux_corollary"
   ],
-  "definition_names": [
-    "ConjCoord.box3",
-    "ConjCoord.reps",
-    "ConjCoord.r3",
-    "ConjCoord.gCount",
-    "ConjCoord.tCoeff",
-    "ConjCoord.phi",
-    "ConjCoord.octA"
-  ],
+  "definition_names": [],
   "permitted_axioms": [
     "propext",
     "Quot.sound",
