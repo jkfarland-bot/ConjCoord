@@ -1,0 +1,49 @@
+{
+  "title": "ConjCoord: a Lean 4 formalization of a class number congruence modulo 16 and Conjecture coord of Paper V",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Farland, Joseph S.",
+      "orcid": "0009-0007-6809-804X"
+    }
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "class numbers",
+    "imaginary quadratic fields",
+    "sums of three squares",
+    "theta series",
+    "Sturm bound",
+    "Lean 4",
+    "Mathlib",
+    "formal verification"
+  ],
+  "description": "<p>Lean 4 / Mathlib formalization accompanying J. S. Farland, \"The first derivative bit at p &equiv; 5 (mod 16): a proof of Conjecture coord of Paper V\" (doi:10.5281/zenodo.23903759): a class number congruence and the proof of Conjecture coord (Conjecture 5.3) of Paper V of the K Project series. For every prime p &equiv; 5 (mod 16), written p = a&sup2; + b&sup2; with b even,</p>\n<p>h(&minus;8p) &equiv; h(&minus;4p) + 8&middot;[b &equiv; &plusmn;6 (mod 16)] (mod 16).</p>\n<p>This refines the classical congruence h(&minus;8p) &equiv; h(&minus;4p) (mod 8) for p &equiv; 1, 5 (mod 16) (Berndt, Corollary 7.4). Equivalently, the sum of the Legendre symbols (x/p) over 0 &lt; x &lt; p/8 is &equiv; 2&middot;[b &equiv; &plusmn;6 (mod 16)] (mod 4).</p>\n<p>The proof writes 4(h(&minus;8p) &minus; h(&minus;4p)) through the representation numbers of x&sup2; + 2y&sup2; + 4z&sup2; and x&sup2; + 2y&sup2; + 2z&sup2;, using Gauss&rsquo;s three-square formula. It then shows that a weight-2 form &Phi; built from sieved theta series vanishes modulo 256, by Sturm&rsquo;s theorem and a finite check below the bound 512, and reads off the coefficient of &Phi; at p.</p>\n<p>The development proves:</p>\n<ul>\n<li>the finite check, by kernel computation;</li>\n<li>the iteration of Sturm&rsquo;s theorem and the inversion of &theta;(1);</li>\n<li>the bijections relating the two ternary forms to sums of three squares;</li>\n<li>the uniqueness argument for p = a&sup2; + b&sup2;;</li>\n<li>the congruence itself;</li>\n<li>Conjecture 5.3 of Paper V;</li>\n<li>the corollaries on the octant sum and with Desnoux&rsquo;s congruence, including the evenness of the Pell solutions S and S&prime;, so that the halves S/2 and S&prime;/2 in Desnoux&rsquo;s formula are exact.</li>\n</ul>\n<p>The modular input (Serre and Stark modularity and Sturm&rsquo;s theorem) is a single explicit hypothesis, as is Gauss&rsquo;s formula r₃(m) = 12h(&minus;4m). The corollaries also take as hypotheses Paper V Theorem 5.2(iv), Berndt&rsquo;s (7.3), Desnoux&rsquo;s Theorem B, and the two Pell equations R&sup2; &minus; pS&sup2; = 1, R&prime;&sup2; &minus; 2pS&prime;&sup2; = 1.</p>\n<p>The statements are in Challenge.lean. Lean's comparator checks them against the proofs, with the definition bodies compared, and the proofs are replayed in the Lean, nanoda and con-ron kernels. No sorry, no native_decide; standard axioms only. The changes in each version are described in the release notes on GitHub: <a href=\"https://github.com/jkfarland-bot/ConjCoord/releases\">github.com/jkfarland-bot/ConjCoord/releases</a>.</p>",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.23903759",
+      "relation": "isSupplementTo",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "https://github.com/jkfarland-bot/ConjCoord",
+      "relation": "isSupplementTo",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "10.5169/seals-48188",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1007/BF01278976",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    }
+  ],
+  "notes": "AI assistance: the Lean code in this record was drafted and repaired by Claude (Anthropic), an AI model, from the statements and proofs of the companion note \"The first derivative bit at p ≡ 5 (mod 16): a proof of Conjecture coord of Paper V\" (doi:10.5281/zenodo.23903759), and compiled locally with lake. The v1.0.1 correction (the Pell hypotheses and the evenness lemma) was also written by Claude in response to the Palomar review. Every proof is checked by the Lean kernel, and Comparator replays the solution against the statement file under the Lean, NanoDa and con-ron kernels. The author, Joseph S. Farland, chose the scope, directed the work, and is responsible for the contents. No external human reviewer has checked the formalization."
+}
